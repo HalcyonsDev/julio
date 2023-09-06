@@ -41,15 +41,12 @@ public class JwtProvider {
                 now.plusDays(31).atZone(ZoneId.systemDefault()).toInstant() :
                 now.plusDays(7).atZone(ZoneId.systemDefault()).toInstant();
 
-        Date expiration = Date.from(expirationTime);
-
         return Jwts.builder()
+                .setClaims(extraClaims)
                 .setSubject(user.getEmail())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(expiration)
+                .setExpiration(Date.from(expirationTime))
                 .signWith(isRefresh ? refreshToken : accessToken)
-                .claim("email", user.getEmail())
-                .setClaims(extraClaims)
                 .compact();
     }
 

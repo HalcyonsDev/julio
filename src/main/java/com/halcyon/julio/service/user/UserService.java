@@ -12,6 +12,14 @@ import org.springframework.web.server.ResponseStatusException;
 public class UserService {
     private final IUserRepository userRepository;
 
+    public User create(User user) {
+        return userRepository.save(user);
+    }
+
+    public void delete(User user) {
+        userRepository.delete(user);
+    }
+
     public User findByEmail(String email) {
         return userRepository.findByEmail(email)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User with this email now found."));
@@ -19,9 +27,5 @@ public class UserService {
 
     public boolean existsByEmail(String email) {
         return userRepository.existsByEmail(email);
-    }
-
-    public User create(User user) {
-        return userRepository.save(user);
     }
 }

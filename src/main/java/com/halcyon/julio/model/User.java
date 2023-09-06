@@ -3,6 +3,7 @@ package com.halcyon.julio.model;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
 
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class User {
 
     @OneToMany(mappedBy = "owner")
     @JsonBackReference
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
     private List<Token> tokens;
 
     @ManyToMany(mappedBy = "members")

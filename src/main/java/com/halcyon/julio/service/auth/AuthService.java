@@ -60,6 +60,17 @@ public class AuthService {
         return new AuthResponse(accessToken, refreshToken);
     }
 
+    public String delete(AuthRequest authRequest) {
+        User user = userService.findByEmail(authRequest.getEmail());
+
+        if (!passwordEncoder.matches(authRequest.getPassword(), user.getPassword())) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Wrong data.");
+        }
+
+        userService.delete(user);
+        return "User deleted successfully.";
+    }
+
     public AuthResponse getTokenByRefresh(String refreshToken, boolean isRefresh) {
         String subject = jwtProvider.extractRefreshClaims(refreshToken).getSubject();
 

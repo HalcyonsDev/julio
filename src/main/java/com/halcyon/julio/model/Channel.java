@@ -13,6 +13,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @RequiredArgsConstructor
+@ToString
 public class Channel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

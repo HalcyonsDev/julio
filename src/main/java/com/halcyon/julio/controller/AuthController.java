@@ -1,7 +1,6 @@
 package com.halcyon.julio.controller;
 
 import com.halcyon.julio.dto.auth.SignUpDto;
-import com.halcyon.julio.model.User;
 import com.halcyon.julio.security.AuthResponse;
 import com.halcyon.julio.service.auth.AuthRequest;
 import com.halcyon.julio.service.auth.AuthService;

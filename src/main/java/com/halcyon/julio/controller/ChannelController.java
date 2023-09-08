@@ -22,16 +22,11 @@ public class ChannelController {
 
     @PostMapping
     public ResponseEntity<Channel> create(@RequestBody @Valid NewChannelDto dto, BindingResult bindingResult) {
-        System.out.println("/???");
-
         if (bindingResult.hasErrors()) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, bindingResult.getAllErrors().get(0).getDefaultMessage());
         }
 
-        System.out.println("!!!!");
-
         Channel createdChannel = channelService.create(dto);
-        System.out.println(createdChannel);
         return ResponseEntity.ok(createdChannel);
     }
 

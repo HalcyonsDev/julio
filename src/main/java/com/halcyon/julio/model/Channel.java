@@ -13,7 +13,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @RequiredArgsConstructor
-@ToString
 public class Channel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,10 +31,9 @@ public class Channel {
     @ManyToMany
     @JoinTable(
             name = "channels_users",
-            inverseJoinColumns = @JoinColumn(name = "channel_id", referencedColumnName = "id"),
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id")
+            joinColumns = @JoinColumn(name = "channel_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
     )
-    @JsonManagedReference
     private List<User> members;
 
     @OneToMany(mappedBy = "channel")

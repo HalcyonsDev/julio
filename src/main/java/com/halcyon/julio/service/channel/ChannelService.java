@@ -21,11 +21,11 @@ public class ChannelService {
     private final AuthService authService;
 
     public Channel create(NewChannelDto dto) {
-        Channel channel = new Channel();
+        Channel channel = new Channel(dto.getTitle());
         User owner = userService.findByEmail(authService.getAuthInfo().getEmail());
 
-        channel.setTitle(dto.getTitle());
         channel.setOwner(owner);
+        channel.setMembers(List.of(owner));
 
         // TODO --realize default chats for new created channel
 
@@ -47,6 +47,10 @@ public class ChannelService {
     public String leaveById(Long channelId) {
         Channel channel = findById(channelId);
         User user = userService.findByEmail(authService.getAuthInfo().getEmail());
+
+        if (channel.getOwner().equals(user)) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "You can't leave from your owned channel.");
+        }
 
         channel.getMembers().remove(user);
         channelRepository.save(channel);

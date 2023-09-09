@@ -25,7 +25,7 @@ public class InviteCode {
     @Column(name = "activations_left")
     private Integer activationsLeft;
 
-    @Column(name = "expirationsTime")
+    @Column(name = "expirations_time")
     private LocalDateTime expirationsTime;
 
     @ManyToOne

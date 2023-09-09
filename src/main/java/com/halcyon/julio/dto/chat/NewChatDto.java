@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class NewChatDto {
-    private Long channelId;
+    private Long chatId;
 
-    @Size(min = 3, max = 20, message = "Chat title must be greater than 3 characters and less than 20 characters!")
+    @Size(min = 3, max = 20, message = "Chat title must be greater than 3 characters and less than 20 characters.")
     private String title;
 }

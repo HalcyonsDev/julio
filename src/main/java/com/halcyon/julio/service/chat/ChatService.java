@@ -29,7 +29,7 @@ public class ChatService {
     private final AuthService authService;
 
     public Chat create(NewChatDto dto) {
-        Channel channel = channelService.findById(dto.getChannelId());
+        Channel channel = channelService.findById(dto.getChatId());
         User user = userService.findByEmail(authService.getAuthInfo().getEmail());
 
         if (!channel.getOwner().equals(user)) {
@@ -91,6 +91,10 @@ public class ChatService {
 
         Category category = categoryService.findById(categoryId);
 
+        if (!chat.getChannel().getCategories().contains(category)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Category with this id not found in chat's channel.");
+        }
+
         chatRepository.updateCategoryById(category, chatId);
         chat.setCategory(category);
 
@@ -109,12 +113,5 @@ public class ChatService {
         chat.setTitle(title);
 
         return chat;
-    }
-
-    public Chat getSpecialChat(Long channelId, String title) {
-        Channel channel = channelService.findById(channelId);
-
-        return chatRepository.findByTitleAndChannel(title, channel)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Chat with this data not found."));
     }
 }

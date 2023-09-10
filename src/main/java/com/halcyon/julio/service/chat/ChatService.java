@@ -29,7 +29,7 @@ public class ChatService {
     private final AuthService authService;
 
     public Chat create(NewChatDto dto) {
-        Channel channel = channelService.findById(dto.getChatId());
+        Channel channel = channelService.findById(dto.getChannelId());
         User user = userService.findByEmail(authService.getAuthInfo().getEmail());
 
         if (!channel.getOwner().equals(user)) {

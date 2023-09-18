@@ -16,7 +16,7 @@ import java.util.Arrays;
 public class LoggingAspect {
     private static final Logger logger = LoggerFactory.getLogger(LoggingAspect.class);
 
-    @Before("execution(* com.halcyon.julio.service.*.*(..))")
+    @Before("execution(* com.halcyon.julio.service.*.*.*(..))")
     public void logMethodCall(JoinPoint joinPoint) {
         logger.info(String.format(
                 "Method %s called with arguments %s",
@@ -25,7 +25,7 @@ public class LoggingAspect {
         ));
     }
 
-    @AfterReturning(pointcut = "execution(* com.halcyon.julio.service.*.*(..))", returning = "result")
+    @AfterReturning(pointcut = "execution(* com.halcyon.julio.service.*.*.*(..))", returning = "result")
     public void logMethodReturn(JoinPoint joinPoint, Object result) {
         logger.info(String.format(
                 "Method %s returned %s",
@@ -34,7 +34,7 @@ public class LoggingAspect {
         ));
     }
 
-    @AfterThrowing(pointcut = "execution(* com.halcyon.julio.service.*.*(..))", throwing = "e")
+    @AfterThrowing(pointcut = "execution(* com.halcyon.julio.service.*.*.*(..))", throwing = "e")
     public void logMethodException(JoinPoint joinPoint, Exception e) {
         logger.info(String.format(
                 "Method %s throw exception %s",

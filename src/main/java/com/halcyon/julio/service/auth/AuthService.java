@@ -3,7 +3,7 @@ package com.halcyon.julio.service.auth;
 import com.halcyon.julio.dto.auth.SignUpDto;
 import com.halcyon.julio.model.Token;
 import com.halcyon.julio.model.User;
-import com.halcyon.julio.repository.ITokenRepository;
+import com.halcyon.julio.security.AuthRequest;
 import com.halcyon.julio.security.AuthResponse;
 import com.halcyon.julio.security.JwtAuthentication;
 import com.halcyon.julio.service.token.TokenService;

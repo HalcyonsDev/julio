@@ -1,4 +1,4 @@
-package com.halcyon.julio.service.auth;
+package com.halcyon.julio.security;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

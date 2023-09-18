@@ -6,4 +6,20 @@
 [![](https://img.shields.io/badge/DBMS-MySQL-%234476ff)](https://www.mysql.com/)
 </h1>
 
-<p>Julio is a messenger with different capabilities, using websockets to manage messages and JWT tokens for authentication & authorization</p>
+<p>Julio is a messenger with users, channels, chats, messages and invite codes</p>
+
+<h1>Possibilities</h1>
+
+<li>Spring Security, Jwt Authentication & Authorization</li>
+<li>Users, Tokens, Channels, Chats, Messages, Invitations CRUD</li>
+<li>Creating channels with many chats, messages, invitations</li>
+<li>OpenAPI</li>
+
+<h1>Technologies</h1>
+<li>Spring Boot</li>
+<li>Spring Data</li>
+<li>Spring Security</li>
+<li>Spring Web</li>
+<li>Spring Websocket</li>
+<li>Swagger</li>
+<li>MySQL</li>

@@ -6,7 +6,7 @@
 [![](https://img.shields.io/badge/DBMS-MySQL-%234476ff)](https://www.mysql.com/)
 </h1>
 
-<p>Julio is a messenger with users, channels, chats, messages and invite codes</p>
+<p>Julio is a messenger with different possibilities, using websockets to manage messages and JWT tokens for authentication & authorization</p>
 
 <h1>Possibilities</h1>
 

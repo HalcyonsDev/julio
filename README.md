@@ -12,7 +12,6 @@
 
 <li>Spring Security, Jwt Authentication & Authorization</li>
 <li>Users, Tokens, Channels, Chats, Messages, Invitations CRUD</li>
-<li>Creating channels with many chats, messages, invitations</li>
 <li>OpenAPI</li>
 
 <h1>Technologies</h1>

@@ -2,9 +2,10 @@ package com.halcyon.julio.controller;
 
 import com.halcyon.julio.dto.auth.SignUpDto;
 import com.halcyon.julio.security.AuthResponse;
-import com.halcyon.julio.service.auth.AuthRequest;
+import com.halcyon.julio.security.AuthRequest;
 import com.halcyon.julio.service.auth.AuthService;
-import com.halcyon.julio.service.auth.RefreshRequest;
+import com.halcyon.julio.security.RefreshRequest;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -16,6 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
+@Tag(name = "Authentication")
 public class AuthController {
     private final AuthService authService;
 

@@ -10,7 +10,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - C:\Users\sadru/docker/volumes/mysql/data:/var/lib/mysql
+      - ./docker/volumes/mysql/data:/var/lib/mysql
     networks:
       - julio-network
   julio-app:

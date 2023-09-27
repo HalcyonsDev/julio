@@ -1,0 +1,30 @@
+version: "1.0"
+
+services:
+  mysql:
+    container_name: mysql
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: S9o6u4T0
+      MYSQL_DATABASE: julio
+    ports:
+      - "3306:3306"
+    volumes:
+      - C:\Users\sadru/docker/volumes/mysql/data:/var/lib/mysql
+    networks:
+      - julio-network
+  julio-app:
+    container_name: julio
+    image: julio
+    ports:
+      - "8080:8080"
+    networks:
+      - julio-network
+    depends_on:
+      - mysql
+volumes:
+  mysql:
+
+networks:
+  julio-network:
+    driver: bridge

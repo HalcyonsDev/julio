@@ -5,7 +5,7 @@ services:
     container_name: mysql
     image: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: S9o6u4T0
+      MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: julio
     ports:
       - "3306:3306"

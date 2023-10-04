@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 public class NewCategoryDto {
     private Long channelId;
 
-    @Size(min = 3, max = 20, message = "Category title must be greater than 3 characters and less than 20 characters.")
+    @Size(min = 4, max = 20, message = "Category title must be greater than 3 characters and less than 20 characters.")
     private String title;
 }

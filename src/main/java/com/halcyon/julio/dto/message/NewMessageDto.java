@@ -11,6 +11,6 @@ import lombok.NoArgsConstructor;
 public class NewMessageDto {
     private Long chatId;
 
-    @Size(min = 1, max = 128, message = "Chat value must be greater than 1 character and less than 128 characters.")
+    @Size(min = 2, max = 128, message = "Chat value must be greater than 1 character and less than 128 characters.")
     public String value;
 }

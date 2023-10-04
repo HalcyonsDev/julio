@@ -6,10 +6,12 @@ import com.halcyon.julio.service.chat.ChatService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -20,6 +22,7 @@ import java.util.Map;
 @RequestMapping("/api/v1/chats")
 @RequiredArgsConstructor
 @Tag(name = "Chats")
+@Validated
 public class ChatController {
     private final ChatService chatService;
 
@@ -77,13 +80,16 @@ public class ChatController {
         return ResponseEntity.ok(updatedChat);
     }
 
-    @PatchMapping("/{chatId}/title/{title}")
+    @PatchMapping("/{chatId}/update-title")
     @Operation(
             summary = "find and update chat's title",
             description = "update chat's title"
     )
-    public ResponseEntity<Chat> updateTitle(@PathVariable Long chatId, @PathVariable String title) {
-        Chat updatedChat = chatService.updateTitle(chatId, title);
+    public ResponseEntity<Chat> updateTitle(
+            @PathVariable Long chatId,
+            @RequestParam
+            @Size(min = 4, max = 20, message = "Chat title must be greater than 3 characters and less than 20 characters.") String value) {
+        Chat updatedChat = chatService.updateTitle(chatId, value);
         return ResponseEntity.ok(updatedChat);
     }
 }
